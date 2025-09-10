@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Tracking Mouse App - by Adam Abed</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #ffffff;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .author-name {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .tagline {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            color: #cccccc;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 18px 50px;
+            background: #ffffff;
+            color: #000000;
+            text-decoration: none;
+            border-radius: 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid #ffffff;
+            transition: all 0.3s ease;
+            margin-bottom: 4rem;
+        }
+
+        .download-btn:hover {
+            background: #000000;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .features-section {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 4rem;
+            letter-spacing: -1px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 2px solid #000000;
+            transition: all 0.3s ease;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .feature-card:hover {
+            background: #000000;
+            color: #ffffff;
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #000000;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .feature-card:hover .feature-title {
+            color: #ffffff;
+        }
+
+        .feature-description {
+            color: #666666;
+            font-size: 1rem;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+
+        .feature-card:hover .feature-description {
+            color: #cccccc;
+        }
+
+        .footer {
+            background: #000000;
+            color: #ffffff;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-links {
+            margin-bottom: 2rem;
+        }
+
+        .footer-link {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-link:hover {
+            opacity: 0.7;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: #cccccc;
+            border-top: 1px solid #333333;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .feature-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .download-btn {
+                padding: 15px 35px;
+                font-size: 1rem;
+            }
+
+            .footer-link {
+                display: block;
+                margin: 1rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .author-name {
+                font-size: 1.3rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>HAND TRACKING MOUSE APP</h1>
+            <div class="author-name">PROGRAMMED BY ADAM ABED</div>
+            <p class="tagline">
+                Professional hand tracking software for seamless computer control. Advanced gesture recognition technology for modern workflows.
+            </p>
+            
+            <a href="
+            https://drive.google.com/uc?export=download&id=1hu69d20DajYNRHTSmfF3_rPs16V_6grl" class="download-btn">DOWNLOAD NOW</a>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">KEY FEATURES</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👋</div>
+                    <h3 class="feature-title">Real-Time Tracking</h3>
+                    <p class="feature-description">
+                        Precision hand movement detection with minimal latency for professional use cases and demanding applications.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🖱️</div>
+                    <h3 class="feature-title">Click Gestures</h3>
+                    <p class="feature-description">
+                        Intuitive left and right click functionality through natural finger gestures and precise motion detection.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3 class="feature-title">Smooth Control</h3>
+                    <p class="feature-description">
+                        Advanced algorithms ensure fluid cursor movement with intelligent smoothing for precise navigation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="mailto:adamprog13@example.com" class="footer-link">Contact</a>
+                <a href="mailto:adamprog13@example.com" class="footer-link">Support</a>
+                <a title="soon!" href="#" class="footer-link">Documentation</a>
+            </div>
+            
+            <div class="copyright">
+                © 2025 ADAM ABED. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
